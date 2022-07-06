@@ -1,21 +1,18 @@
 # Title: PHP Price Calculator challenge
 
-- Repository: `php-pricecalculator-challenge`
-- Type of Challenge: `Learning challenge`
-- Duration: `4 days`
-- Deployment strategy : `NA`
 - Team challenge : `pairs`
 
-## Learning objectives
+## Our learning objectives
 - Apply basic OOP principles
 - Import data with a database
 - Learn to use an MVC
 
 ## The Mission
-Today you are going to combine your new awesome OOP powers with a database.
-To give you some time to get familiar with a database, this exercise only requires read access, not write access.
+Today and in the next following few days Vlad and I are going to combine our newly required OOP powers with a database.
+We will put our heads together and make this challenge our own.
+The challenge will require read access and not write access, this is to give us some time to get familiar with databases.
 
-Make a price calculator with the following entities:
+Our price calculator needs the following entities:
 - Customer (Firstname, Lastname)
 - A customer group (Name)
 - A product (product name, price in cents)
@@ -50,9 +47,9 @@ MVC is a classic web design pattern consistent of three levels, and is an extens
 - The **View** renders the model into a web page suitable for interaction with the user.
 
 For now you should create 3 different directories:
-- **Controller/**: has access to GET/POST vars, receives the Request
-- **Model/**: Most of your code should be here, for example the Product and Customer class.
-- **View/**: Your HTML files.
+- [ ] **Controller/**: has access to GET/POST vars, receives the Request
+- [ ] **Model/**: Most of your code should be here, for example the Product and Customer class.
+- [ ] **View/**: Your HTML files.
 
 While splitting up the Controller & Model is quite intuitive, splitting up the View from the Controller might require a larger change in how you write code. Let us look at some example:
 
@@ -79,16 +76,23 @@ require 'view.php';
 ````
 
 ## Must-have features
-- A dropdown where you can select a Product and a Customer and you get the basic information of the product + the price.
-- Use a [MVC pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). You can use the [MVC Boilerplate](https://github.com/becodeorg/php-mvc-boilerplate).
-- Use separate objects for importing the entities with SQL, and for managing the entities.
+- [ ] A dropdown where you can select a Product and a Customer and you get the basic information of the product + the price.
+- [ ] Use a [MVC pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). You can use the [MVC Boilerplate](https://github.com/becodeorg/php-mvc-boilerplate).
+- [ ] Use separate objects for importing the entities with SQL, and for managing the entities.
 
 ## Nice to have features
-- An actual login page for a customer
-- A table where you can see in detail how the price is calculated
-- The possibility to have different prices for different quantities (look, 1 EUR per item for 1, 0.9 EUR per item for 100, ...)
-- A category page for the different products
+- [ ] An actual login page for a customer
+- [ ] A table where you can see in detail how the price is calculated
+- [ ] The possibility to have different prices for different quantities (look, 1 EUR per item for 1, 0.9 EUR per item for 100, ...)
+- [ ] A category page for the different products
 
 ### Discussion for friday
 - Do you prefer procedural code or object oriented one? Why?
 - What is the use of an MVC? Do you prefer another way of structuring your code?
+
+## Some TO-DO logic we got from Sicco
+- [ ] TODO explore what is MVC? Why is everything a class? Research!
+- [ ] TODO make a DataBase
+- [ ] TODO make connection between CONTROLLER/MODEL and DB
+- [ ] TODO display data to test connection
+- [ ] TODO DO IT ALL ON HOMEPAGE FOR TESTING REFACTOR LATER
