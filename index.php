@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
 
+//get the env file environment variables
+require_once realpath(__DIR__ . "/vendor/autoload.php");
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 //include all your model files here
 require 'Model/User.php';
 //include all your controllers here
