@@ -3,6 +3,14 @@
 Anything complex should be calculated in the model -->
 <section>
     <h4>Hello <?php echo $user->getName()?>,</h4>
+    <h4>Testing some database data</h4>
+        <?php
+            $testObj = new Test();
+            echo $testObj->getCustomers();
+            echo $testObj->getCustomersStmt("Buddy", "Sharrock");
+            echo $testObj->setCustomersStmt("Zeno", "Driesen", 8)
+        ?>
+
 
     <p><a href="index.php?page=info">To info page</a></p>
 
