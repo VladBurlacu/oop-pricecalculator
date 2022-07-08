@@ -21,6 +21,14 @@ Anything complex should be calculated in the model -->
     <div>
 
         <p>Put your content here.</p>
+
+        <select id="products">
+            <?php
+            $products = new Products();
+            echo $products->showProducts();
+            ?>
+        </select>
+
         <select id="customers">
             <?php
                 $customers = new Customers();
