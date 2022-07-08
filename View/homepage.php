@@ -14,16 +14,20 @@ Anything complex should be calculated in the model -->
         */
 
         $customers = new Customers();
-        echo $customers->showCustomers();
+
         ?>
     </div>
 
     <div>
 
         <p>Put your content here.</p>
-        <select name="customers" id="customers">
-
+        <select id="customers">
+            <?php
+                $customers = new Customers();
+                echo $customers->showCustomers();
+            ?>
         </select>
+
     </div>
 
     <div>
