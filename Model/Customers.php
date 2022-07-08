@@ -6,7 +6,7 @@ class Customers extends Database
 {
 
     protected function getCustomers() {
-        $sql = "SELECT firstname, lastname FROM customer";
+        $sql = "SELECT id, firstname, lastname FROM customer";
         $stmt = $this->connect()->query($sql);
 
         $results = $stmt->fetchAll();
@@ -16,7 +16,7 @@ class Customers extends Database
     public function showCustomers() {
         $results = $this->getCustomers();
         foreach ($results as $result){
-            echo $result['firstname'] . '&nbsp;' . $result['lastname'] . "<br>";
+            echo "<option value='" . $result['id'] . "'>" . $result['firstname'] . '&nbsp;' . $result['lastname'] . "</option>";
         }
     }
 
