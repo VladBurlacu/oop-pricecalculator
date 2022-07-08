@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-class User
+class User extends DBconnection
 {
     private $name;
 
@@ -15,3 +15,4 @@ class User
         return $this->name;
     }
 }
+
