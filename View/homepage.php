@@ -5,10 +5,15 @@ Anything complex should be calculated in the model -->
     <h4>Hello <?php echo $user->getName()?>,</h4>
     <h4>Testing some database data</h4>
         <?php
+            /*
             $testObj = new Test();
             echo $testObj->getCustomers();
             echo $testObj->getCustomersStmt("Buddy", "Sharrock");
-            echo $testObj->setCustomersStmt("Zeno", "Driesen", 8)
+            echo $testObj->setCustomersStmt("Zeno", "Driesen", 8);
+            */
+
+            $customers = new Customers();
+            echo $customers->showCustomers();
         ?>
 
 
