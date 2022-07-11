@@ -14,6 +14,15 @@ Anything complex should be calculated in the model -->
 
     <p><a href="index.php?page=info">To info page</a></p>
 
-    <p>Put your content here.</p>
+    <div class="container">
+        <div>Customer:</div>
+            <div>
+                <?php
+                $customers = array();
+                ?>
+            </div>
+        <div>Product:</div>
+    </div>
+
 </section>
 <?php require 'includes/footer.php'?>
