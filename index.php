@@ -10,7 +10,9 @@ $dotenv->load();
 //include all your model files here
 require 'Model/User.php';
 require 'Model/Database.php';
-require 'Model/Test.php';
+//require 'Model/Test.php';
+require 'Model/Customers.php';
+require 'Model/Products.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';

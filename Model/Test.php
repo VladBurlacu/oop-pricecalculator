@@ -23,9 +23,11 @@ class Test extends Database
         }
     }
 
+    /* Setting a new customer in the database with firstname, lastname and a group id
     public function setCustomersStmt($firstname, $lastname, $group_id) {
         $sql = "INSERT INTO customer(firstname, lastname, group_id) VALUES (?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$firstname, $lastname, $group_id]);
     }
+    */
 }
