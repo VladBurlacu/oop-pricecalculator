@@ -29,7 +29,7 @@ Anything complex should be calculated in the model -->
         <form method="post">
             <label for="customers">Customer:</label>
 
-            <select id="products">
+            <select id="products" name="products">
 
                 <?php
                 foreach ($productNames as $product){
@@ -41,7 +41,7 @@ Anything complex should be calculated in the model -->
 
             <label for="products">Product:</label>
 
-            <select id="customers">
+            <select id="customers" name="customers">
                 <?php
                 foreach ($customerNames as $customer){
                     echo "<option value='" . $customer['id'] . "'>" . $customer['firstname'] . '&nbsp;' . $customer['lastname'] . "</option>";
@@ -59,7 +59,16 @@ Anything complex should be calculated in the model -->
             </select>-->
             <button type="submit" name="submit">Calculate</button>
         </form>
-
+        <!--
+        <h2>
+            <?php
+                if (isset($Post['submit'])) {
+                    echo $productDetails['name'] . "<br>";
+                    echo "$ " . $productDetails['price'];
+                }
+            ?>
+        </h2>
+        -->
     </div>
 
     <div>
