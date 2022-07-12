@@ -59,16 +59,18 @@ Anything complex should be calculated in the model -->
             </select>-->
             <button type="submit" name="submit">Calculate</button>
         </form>
-        <!--
+
         <h2>
             <?php
-                if (isset($Post['submit'])) {
+
+                if (isset($POST['submit'])){
                     echo $productDetails['name'] . "<br>";
-                    echo "$ " . $productDetails['price'];
+                    echo $productDetails['price'];
                 }
+
             ?>
         </h2>
-        -->
+
     </div>
 
     <div>
