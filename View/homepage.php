@@ -65,7 +65,7 @@ Anything complex should be calculated in the model -->
 
                 if (isset($POST['submit'])){
                     echo $productDetails['name'] . "<br>";
-                    echo $productDetails['price'];
+                    echo $productDetails['price']/100;
                 }
 
             ?>
