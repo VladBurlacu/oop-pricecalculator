@@ -27,4 +27,14 @@ class PriceCalculator
         $this->allDiscounts['variable_discount_group'] = $this->groupDiscountDetails['variable_discount'];
     }
 
+    public function getHighestFixedDiscount(): int
+    {
+        if ($this->allDiscounts['fixed_discount'] > $this->allDiscounts['fixed_discount_group']) {
+            $this->highestFixedDiscount = $this->allDiscounts['fixed_discount'];
+        } else {
+            $this->highestFixedDiscount = $this->allDiscounts['fixed_discount_group'];
+        }
+        return $this->highestFixedDiscount;
+    }
+
 }
