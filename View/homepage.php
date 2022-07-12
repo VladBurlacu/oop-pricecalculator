@@ -27,7 +27,7 @@ Anything complex should be calculated in the model -->
         <p>Put your content here.</p>
 
         <form method="post">
-            <label for="customers">Product:</label>
+            <label for="products">Product:</label>
 
             <select id="products" name="products">
 
@@ -39,7 +39,7 @@ Anything complex should be calculated in the model -->
 
             </select>
 
-            <label for="products">Customer:</label>
+            <label for="customers">Customer:</label>
 
             <select id="customers" name="customers">
                 <?php
