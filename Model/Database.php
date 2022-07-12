@@ -32,26 +32,41 @@ class Database
     }
 
     public function getCustomers() : array{
-        $sql = "SELECT id, firstname, lastname, group_id FROM customer";
+        $sql = "SELECT id, firstname, lastname FROM customer ORDER BY lastname";
         $stmt = $this->connect()->query($sql);
 
-        $results = $stmt->fetchAll();
-        return $results;
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function getCustomerByID($id) {
+        $sql = "SELECT group_id, fixed_discount, variable_discount FROM customer WHERE id=" . $id;
+        $stmt = $this->connect()->query($sql);
+        $result = $stmt->fetch();
+        return $result;
     }
 
     public function getProducts() : array {
         $sql = "SELECT id, name, CAST(price/100 AS DECIMAL (5, 2)) AS price FROM product";
         $stmt = $this->connect()->query($sql);
 
-        $results = $stmt->fetchAll();
-        return $results;
+        $result = $stmt->fetchAll();
+        return $result;
     }
 
-    public function getGroupsByID($group_id) : array{
-        $sql = "SELECT name, parent_id, fixed_discount, variable_discount FROM customer_group WHERE id=" . $group_id . " LIMIT 1";
+    public function getProductByID($id) {
+        $sql = "SELECT name, CAST(price/100 AS DECIMAL (5, 2)) AS price FROM product WHERE id=" . $id;
         $stmt = $this->connect()->query($sql);
-        $results = $stmt->fetchAll();
-        return $results;
+
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function getGroupDiscountByID($groupID){
+        $sql = "SELECT fixed_discount, variable_discount FROM customer_group WHERE id=" . $groupID;
+        $stmt = $this->connect()->query($sql);
+        $result = $stmt->fetchAll();
+        return $result;
     }
 
 }
