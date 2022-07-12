@@ -47,9 +47,9 @@ MVC is a classic web design pattern consistent of three levels, and is an extens
 - The **View** renders the model into a web page suitable for interaction with the user.
 
 For now you should create 3 different directories:
-- [ ] **Controller/**: has access to GET/POST vars, receives the Request
-- [ ] **Model/**: Most of your code should be here, for example the Product and Customer class.
-- [ ] **View/**: Your HTML files.
+- [x] **Controller/**: has access to GET/POST vars, receives the Request
+- [x] **Model/**: Most of your code should be here, for example the Product and Customer class.
+- [x] **View/**: Your HTML files.
 
 While splitting up the Controller & Model is quite intuitive, splitting up the View from the Controller might require a larger change in how you write code. Let us look at some example:
 
@@ -76,8 +76,8 @@ require 'view.php';
 ````
 
 ## Must-have features
-- [ ] A dropdown where you can select a Product and a Customer and you get the basic information of the product + the price.
-- [ ] Use a [MVC pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). You can use the [MVC Boilerplate](https://github.com/becodeorg/php-mvc-boilerplate).
+- [x] A dropdown where you can select a Product and a Customer and you get the basic information of the product + the price.
+- [x] Use a [MVC pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). You can use the [MVC Boilerplate](https://github.com/becodeorg/php-mvc-boilerplate).
 - [ ] Use separate objects for importing the entities with SQL, and for managing the entities.
 
 ## Nice to have features
@@ -90,9 +90,94 @@ require 'view.php';
 - Do you prefer procedural code or object oriented one? Why?
 - What is the use of an MVC? Do you prefer another way of structuring your code?
 
+## Step 1
+### Research on MVC:
+- The Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the _**model**_, _**the view**_, and the _**controller**_. Each of these components are built to handle specific development aspects of an application.
+
+#### Model
+- The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. For example, a Customer object will retrieve the customer information from the database, manipulate it and update it data back to the database or use it to render data.
+
+#### View
+- The View component is used for all the UI logic of the application. For example, the Customer view will include all the UI components such as text boxes, dropdowns, etc. that the final user interacts with.
+
+#### Controller
+- Controllers act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. For example, the Customer controller will handle all the interactions and inputs from the Customer View and update the database using the Customer Model. The same controller will be used to view the Customer data.
+
+Reads:
+- https://dev.to/kahawaiikailana/what-s-the-difference-between-mvc-and-oop-4m9k
+- https://programmingdive.com/understanding-mvc-design-pattern-in-php/
+
+## Step 2
+Connecting to MySQL using PDO.
+PD whut?! Google this stuff. PDO is a `Database Access Abstraction Layer`, an application programming interface which unifies the communication between a computer application and databases.
+I also hear stuff about .env file, so let's read this [article](https://udoyhasan.medium.com/what-is-an-env-file-and-how-to-use-an-env-file-in-php-4e146358cca6) that some people in the class have shared on what it is and how to use it.
+So I first followed this article to set up an env file.
+Afterwards I read the [following](https://phpdelusions.net/pdo_examples/connect_to_mysql) on how to connect my database using PDO.
+
+## Step 3
+Here I first wanted to get some data from the database we got. So I created the following function in my Database Class:
+ ```php
+    public function getCustomers() : array{
+        $sql = "SELECT id, firstname, lastname FROM customer ORDER BY lastname";
+        $stmt = $this->connect()->query($sql);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+ ```
+I then required the Model/Database in my index.php file, afterwards I created a new database connection in my HomepageController.
+From here I was able to display the customers in a drop-down list. Afterwards I heard that the way I did it isn't very OOP. So I'll have to do this better in the future.
+The following code helps me to get the information I need to display it in the view afterwards:
+```php
+class HomepageController
+{
+    private $databaseLoader;
+    public function __construct() {
+        $this->databaseLoader = new Database();
+    }
+    //render function with both $_GET and $_POST vars available if it would be needed.
+    public function render(array $GET, array $POST)
+    {
+        $customerNames = $this->databaseLoader->getCustomers();
+        $productNames = $this->databaseLoader->getProducts();
+    ...
+```
+What my homepage.php looks like:
+```php
+<form method="post">
+    <label for="products">Product:</label>
+    <select id="products" name="products">
+        <?php
+            foreach ($productNames as $product){
+                echo "<option value='" . $product['id'] . "'>" . $product['name']. " - $" . $product['price']."</option>";
+            }
+        ?>
+    </select>
+    <label for="customers">Customer:</label>
+    <select id="customers" name="customers">
+        <?php
+        foreach ($customerNames as $customer){
+            echo "<option value='" . $customer['id'] . "'>" . $customer['firstname'] . '&nbsp;' . $customer['lastname'] . "</option>";
+            }
+        ?>
+    </select>
+    <button type="submit" name="submit">Calculate</button>
+</form>
+```
+This will give me the following view:
+![drop-down lists](images/dropdown.png)
+
+## Step 4
+From here on out we struggled very hard. How to make all the calculations and to get everything together. Vlad had his javascript test and wasn't feeling too well throughout the assignment so we did our best to make it work.
+So we talked to Sicco to give us a boost in which way we should be thinking. Because on monday we struggled the whole day and didn't manage to do anything.
+We slept a night on it and the next day I first started to read some repositories of my fellow students. I don't really like doing this but since we were struggling it could help us.
+Brian really managed to explain everything very well, so I looked on how he did the calculations. It was all very understandable. So thanks to his work we managed to do some calculations.
+I personally felt like we needed a separate exercise in which we would just learn how to get data from a database and display it and afterwards do calculations. But by doing these things more and more, I feel confident it will go better with time.
+
+I also learned that it isn't always easy to work with someone else then the people you are used to.
+
 ## Some TO-DO logic we got from Sicco
-- [ ] TODO explore what is MVC? Why is everything a class? Research!
-- [ ] TODO make a DataBase
-- [ ] TODO make connection between CONTROLLER/MODEL and DB
-- [ ] TODO display data to test connection
-- [ ] TODO DO IT ALL ON HOMEPAGE FOR TESTING REFACTOR LATER
+- [x] TODO explore what is MVC? Why is everything a class? Research!
+- [x] TODO make a DataBase
+- [x] TODO make connection between CONTROLLER/MODEL and DB
+- [x] TODO display data to test connection
+- [x] TODO DO IT ALL ON HOMEPAGE FOR TESTING REFACTOR LATER
