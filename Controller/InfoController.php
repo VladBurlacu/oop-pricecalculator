@@ -11,7 +11,7 @@ class InfoController
 
         //DROPDOWN WITH ALL USERS (passes ID in post on select)
 
-        //if the post contians an userid (because user selected something)
+        //if the post contains an userid (because user selected something)
 
         //YES? -> ask the userloader to return the requested user
 
