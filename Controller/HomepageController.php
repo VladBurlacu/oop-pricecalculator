@@ -16,11 +16,22 @@ class HomepageController
 
         if (isset($POST['submit'])) {
             $customerDetails = $this->databaseLoader->getCustomerByID($POST['customers']);
-            var_dump($customerDetails);
+            //var_dump($customerDetails);
             $productDetails = $this->databaseLoader->getProductByID($POST['products']);
-            var_dump($productDetails);
-            $groupDiscount = $this->databaseLoader->getGroupDiscountByID($customerDetails['group_id']);
-            var_dump($groupDiscount);
+            //var_dump($productDetails);
+            $groupDiscountDetails = $this->databaseLoader->getGroupDiscountByID($customerDetails['group_id']);
+            //var_dump($groupDiscountDetails);
+
+            //new price calculator
+            $priceCalculation = new PriceCalculator($customerDetails, $productDetails, $groupDiscountDetails);
+            //before we want to get the discounts we need to change the discount values that have NULL to 0
+            $priceCalculation->refactorDiscounts();
+            $priceCalculation->getHighestFixedDiscount();
+            $priceCalculation->getHighestVariableDiscount();
+            $priceCalculation->priceCalculation();
+            var_dump($priceCalculation);
+
+
         }
 
 
