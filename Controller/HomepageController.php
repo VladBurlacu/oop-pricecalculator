@@ -3,12 +3,23 @@ declare(strict_types = 1);
 
 class HomepageController
 {
+    private $databaseLoader;
+
+    public function __construct() {
+        $this->databaseLoader = new Database();
+    }
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
-        $dataSource = new Database();
-        $customerNames = $dataSource->getCustomers();
-        $productNames = $dataSource->getProducts();
+        $customerNames = $this->databaseLoader->getCustomers();
+        $productNames = $this->databaseLoader->getProducts();
+
+        if (isset($POST['submit'])) {
+            $customerDetails = $this->databaseLoader->getCustomerByID($POST['customers']);
+            var_dump($customerDetails);
+            $productDetails = $this->databaseLoader->getProductByID($POST['products']);
+            var_dump($productDetails);
+        }
 
 
 
