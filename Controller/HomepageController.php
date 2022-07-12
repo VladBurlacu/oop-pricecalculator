@@ -30,7 +30,7 @@ class HomepageController
             $priceCalculation->getHighestVariableDiscount();
             $priceCalculation->priceCalculation();
             $result = $priceCalculation->getResult();
-            var_dump($result);
+            //var_dump($result);
 
 
         }
