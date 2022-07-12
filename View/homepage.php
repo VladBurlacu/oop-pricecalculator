@@ -59,17 +59,33 @@ Anything complex should be calculated in the model -->
             </select>-->
             <button type="submit" name="submit">Calculate</button>
         </form>
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div>
+                <h1>Product before discount:</h1>
+                <h2>
+                    <?php
 
-        <h2>
-            <?php
+                    if (isset($POST['submit'])){
+                        echo $productDetails['name'] . "<br><br>";
+                        echo "$ " . $productDetails['price']/100;
+                    }
 
-                if (isset($POST['submit'])){
-                    echo $productDetails['name'] . "<br>";
-                    echo $productDetails['price']/100;
-                }
+                    ?>
+                </h2>
+            </div>
 
-            ?>
-        </h2>
+            <div>
+                <h1>After discount</h1>
+                <h2><?php
+
+                    if (isset($POST['submit'])){
+                        echo $productDetails['name'] . "<br><br>";
+                        echo "$ " . $result;
+                    }
+
+                    ?></h2>
+            </div>
+        </div>
 
     </div>
 
