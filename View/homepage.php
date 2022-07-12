@@ -3,7 +3,7 @@
 Anything complex should be calculated in the model -->
 <section style="display: flex; flex-direction: row; justify-content: space-between;">
     <div>
-        <h4>Hello <?php echo $user->getName()?>,</h4>
+
         <h4>Testing some database data</h4>
         <?php
         /*
@@ -12,8 +12,12 @@ Anything complex should be calculated in the model -->
         echo $testObj->getCustomersStmt("Buddy", "Sharrock");
         echo $testObj->setCustomersStmt("Zeno", "Driesen", 8);
         */
+        /*
+        $customer = new Customers();
+        $custumerGroup = $customer->getCustomerGroup(29);
+        echo json_encode($custumerGroup);
+        */
 
-        $customers = new Customers();
 
         ?>
     </div>
@@ -22,19 +26,39 @@ Anything complex should be calculated in the model -->
 
         <p>Put your content here.</p>
 
-        <select id="products">
-            <?php
-            $products = new Products();
-            echo $products->showProducts();
-            ?>
-        </select>
+        <form method="post">
+            <label for="customers">Customer:</label>
 
-        <select id="customers">
-            <?php
-                $customers = new Customers();
-                echo $customers->showCustomers();
-            ?>
-        </select>
+            <select id="products">
+
+                <?php
+                foreach ($productNames as $product){
+                    echo "<option value='" . $product['id'] . "'>" . $product['name']. " - $" . $product['price']."</option>";
+                }
+                ?>
+
+            </select>
+
+            <label for="products">Product:</label>
+
+            <select id="customers">
+                <?php
+                foreach ($customerNames as $customer){
+                    echo "<option value='" . $customer['id'] . "'>" . $customer['firstname'] . '&nbsp;' . $customer['lastname'] . "</option>";
+                }
+                ?>
+            </select>
+
+            <!--<label for="amount">Amount:</label>
+            <select id="amount">
+                <?php
+                    for ($i=1; $i <= 20; $i++){
+                        echo "<option>$i</option>";
+                    }
+                ?>
+            </select>-->
+            <button type="submit" name="submit">Calculate</button>
+        </form>
 
     </div>
 
