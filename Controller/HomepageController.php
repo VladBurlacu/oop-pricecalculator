@@ -19,6 +19,8 @@ class HomepageController
             var_dump($customerDetails);
             $productDetails = $this->databaseLoader->getProductByID($POST['products']);
             var_dump($productDetails);
+            $groupDiscount = $this->databaseLoader->getGroupDiscountByID($customerDetails['group_id']);
+            var_dump($groupDiscount);
         }
 
 
