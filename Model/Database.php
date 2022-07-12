@@ -55,7 +55,7 @@ class Database
     }
 
     public function getProductByID($id) {
-        $sql = "SELECT name, CAST(price/100 AS DECIMAL (5, 2)) AS price FROM product WHERE id=" . $id;
+        $sql = "SELECT name, price FROM product WHERE id=" . $id;
         $stmt = $this->connect()->query($sql);
 
         $result = $stmt->fetch();
